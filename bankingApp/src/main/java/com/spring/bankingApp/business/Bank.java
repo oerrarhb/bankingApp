@@ -1,7 +1,7 @@
 package com.spring.bankingApp.business;
 
-import com.spring.bankingApp.entities.Account;
-import com.spring.bankingApp.entities.Operation;
+import com.spring.bankingApp.model.Account;
+import com.spring.bankingApp.model.Operation;
 import org.springframework.data.domain.Page;
 
 public interface Bank {

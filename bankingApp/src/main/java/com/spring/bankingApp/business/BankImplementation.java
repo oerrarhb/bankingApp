@@ -1,7 +1,7 @@
 package com.spring.bankingApp.business;
 
-import com.spring.bankingApp.entities.Account;
-import com.spring.bankingApp.entities.Operation;
+import com.spring.bankingApp.model.Account;
+import com.spring.bankingApp.model.Operation;
 import com.spring.bankingApp.repositories.AccountRepository;
 import com.spring.bankingApp.repositories.OperationRepository;
 import java.util.Date;

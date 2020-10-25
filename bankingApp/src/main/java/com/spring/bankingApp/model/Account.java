@@ -1,4 +1,4 @@
-package com.spring.bankingApp.entities;
+package com.spring.bankingApp.model;
 
 
 import java.io.Serializable;
