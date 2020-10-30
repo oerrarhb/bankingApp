@@ -2,10 +2,10 @@ package com.spring.bankingApp.business;
 
 import com.spring.bankingApp.model.Account;
 import com.spring.bankingApp.model.Operation;
+import com.spring.bankingApp.model.OperationTypes;
 import com.spring.bankingApp.repositories.AccountRepository;
 import com.spring.bankingApp.repositories.OperationRepository;
 import java.util.Date;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
@@ -21,10 +21,9 @@ public class BankImplementation implements Bank {
     @Autowired
     private OperationRepository operationRepository;
 
-
     @Override
     public Account checkAccount(String accountId) {
-        Optional<Account> account = accountRepository.findById(accountId);
+        var account = accountRepository.findById(accountId);
         if (account.isPresent()) {
             return account.get();
         } else {
@@ -33,12 +32,11 @@ public class BankImplementation implements Bank {
     }
 
     @Override
-    public void transferMoney(String accountId, double amount) {
-        Account account = checkAccount(accountId);
-        Operation transfer = Operation.builder()
-                .id(Math.round(Math.random()))
+    public void depositMoney(String accountId, double amount) {
+        var account = checkAccount(accountId);
+        var transfer = Operation.builder()
                 .dateOfOperation(new Date())
-                .type("transfer")
+                .type(OperationTypes.DEPOSIT)
                 .amount(amount)
                 .account(account)
                 .build();
@@ -49,11 +47,10 @@ public class BankImplementation implements Bank {
 
     @Override
     public void withdrawMoney(String accountId, double amount) {
-        Account account = checkAccount(accountId);
-        Operation withdraw = Operation.builder()
-                .id(Math.round(Math.random()))
+        var account = checkAccount(accountId);
+        var withdraw = Operation.builder()
                 .dateOfOperation(new Date())
-                .type("withdraw")
+                .type(OperationTypes.WITHDRAW)
                 .amount(amount)
                 .account(account)
                 .build();
@@ -63,8 +60,9 @@ public class BankImplementation implements Bank {
     }
 
     @Override
-    public void depositMoney(String accountId1, String accountId2, double amount) {
-
+    public void transferMoney(String accountId1, String accountId2, double amount) {
+        depositMoney(accountId1, amount);
+        withdrawMoney(accountId2, amount);
     }
 
     @Override
