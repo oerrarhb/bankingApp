@@ -12,6 +12,6 @@ public class BankController {
 
     @RequestMapping("/operations")
     private String index() {
-        return "comptes";
+        return "accounts";
     }
 }

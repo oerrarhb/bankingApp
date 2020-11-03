@@ -3,26 +3,77 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Bank</title>
-    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.mib.css}"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
     <link rel="stylesheet" type="text/css" href="../static/css/style.css" th:href="@{/css/style.css}"/>
 </head>
 <body>
-<header></header>
-<div class="navbar navbar-default">
-    <div class="container-fluid">
-      <ul class="nav navbar-nav">
-          <li><a th:href="@{/operations}">Operations</a></li>
-          <li><a th:href="@{/accounts}">Accounts</a></li>
-          <li><a th:href="@{/clients}">Clients</a></li>
-      </ul>
+<header>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <h1>HELLO BANK</h1>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a th:href="@{/operations}" class="nav-link">Operations</a></li>
+                <li class="nav-item"><a th:href="@{/accounts}" class="nav-link">Accounts</a></li>
+                <li class="nav-item"><a th:href="@{/clients}" class="nav-link">Clients</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<section layout:fragment="content">
+    <h1>Test</h1>
+</section>
+<!-- Footer -->
+<!-- Footer -->
+
+<footer class="page-footer font-small teal pt-4">
+
+
+    <!-- Footer Text -->
+    <div class="container-fluid text-center text-md-left">
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+            <!-- Grid row -->
+            <div class="row">
+
+                <!-- Grid column -->
+                <div class="col-md-6 mt-md-0 mt-3">
+                    <!-- Content -->
+                    <h5 class="text-uppercase font-weight-bold">Contact</h5>
+                    <small>othmane.errarhbi@gmail.com</small>
+                </div>
+                <!-- Grid column -->
+
+                <hr class="clearfix w-100 d-md-none pb-3">
+
+                <!-- Grid column -->
+                <div class="col-md-6 mb-md-0 mb-3">
+
+                    <!-- Content -->
+                    <h5 class="text-uppercase font-weight-bold">Contributing</h5>
+                    <p>
+                        <a href="https://github.com/oerrarhb/bankingApp/tree/main/bankingApp">Github Repository</a>
+                    </p>
+                </div>
+                <!-- Grid column -->
+
+            </div>
+        </nav>
+        <!-- Grid row -->
+
     </div>
-</div>
-<section layout:fragment="content"></section>
-<footer class="navbar-fixed-top">
-    <small> BNP Paribas - Courbevoie Victor Hugo </small>
-    <small> 1 Place Victor Hugo </small>
-    <small> 01 46 91 82 53 </small>
+    <!-- Footer Text -->
+
+
+    <!-- Copyright -->
 </footer>
 
+<!-- Footer -->
 </body>
+<style>
+footer {
+clear: both;
+position: relative;
+height: 200px;
+margin-top: 450px;
+}
+</style>
 </html>
