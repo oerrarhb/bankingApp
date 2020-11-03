@@ -8,8 +8,21 @@
 </head>
 <body>
 <header></header>
-<section></section>
-<footer></footer>
+<div class="navbar navbar-default">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav">
+          <li><a th:href="@{/operations}">Operations</a></li>
+          <li><a th:href="@{/accounts}">Accounts</a></li>
+          <li><a th:href="@{/clients}">Clients</a></li>
+      </ul>
+    </div>
+</div>
+<section layout:fragment="content"></section>
+<footer class="navbar-fixed-top">
+    <small> BNP Paribas - Courbevoie Victor Hugo </small>
+    <small> 1 Place Victor Hugo </small>
+    <small> 01 46 91 82 53 </small>
+</footer>
 
 </body>
 </html>
