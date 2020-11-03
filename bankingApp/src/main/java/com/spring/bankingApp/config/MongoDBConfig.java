@@ -22,7 +22,6 @@ public class MongoDBConfig {
 
     BankImplementation bankImplementation = new BankImplementation();
 
-
     @Bean
     CommandLineRunner commandLineRunner(ClientRepository clientRepository, OperationRepository operationRepository, AccountRepository accountRepository) {
         return strings -> {
@@ -73,8 +72,6 @@ public class MongoDBConfig {
                     .type(OperationTypes.WITHDRAW)
                     .amount(789)
                     .build();
-
-
             operationRepository.saveAll(List.of(operation1, operation2, operation3));
             accountRepository.saveAll(List.of(account1.withOperations(List.of(operation1, operation2)), account2, account3.withOperations(List.of(operation3)), account4));
         };
