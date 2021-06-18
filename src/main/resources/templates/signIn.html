@@ -90,11 +90,12 @@
                                    placeholder="Enter your Email Address" value="" required>
                         </div>
                     </div>
+                    <script src="/js/confirm-password.js"></script>
                     <div class="form-group">
                         <label for="password" class="sr-only">Password</label>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-key"></i> </span>
-                            <input type="password" class="form-control" id="password" name="password"
+                            <input type="password" class="form-control" id="password" name="password" onkeyup='check();'
                                    th:field="*{password}" placeholder="Enter Your Password" value="" required>
                         </div>
                     </div>
@@ -102,14 +103,14 @@
                         <label for="confirm_password" class="sr-only">Password</label>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-key"></i> </span>
-                            <input type="password" class="form-control" id="confirm_password" name="confirm_password"
+                            <input type="password" class="form-control" id="confirm_password" name="confirm_password" onkeyup='check();'
                                    placeholder="Confirm Your Password" value="" required>
-                            <span id='message'></span>
                         </div>
+                        <span id='message'></span>
                     </div>
                     <div class="col-md-offset-4 col-lg-4 col-sm-4 col-md-4">
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary">Create</button>
+                            <button type="submit" id="submit" disabled  class="btn btn-primary">Create</button>
                         </div>
                     </div>
                 </form>
