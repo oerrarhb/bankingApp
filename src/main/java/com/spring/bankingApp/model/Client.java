@@ -2,6 +2,7 @@ package com.spring.bankingApp.model;
 
 import java.io.Serializable;
 import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,7 +21,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Client implements Serializable {
     @Id
     private String id;
-    private String name;
+    private String firstName;
+    private String lastName;
+    private String phone;
+    private String address;
+    private String city;
     private String email;
     private List<Account> accounts;
 }
