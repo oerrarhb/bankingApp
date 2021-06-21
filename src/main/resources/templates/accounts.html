@@ -71,13 +71,16 @@
                             <label th:text="${account.idAccount}"></label>
                         </div>
                         <div>
-                            <input checked="checked" name="typeOperation" onchange="document.getElementById('forTransfer').style.display='none'" type="radio"
+                            <input checked="checked" name="typeOperation"
+                                   onchange="document.getElementById('forTransfer').style.display='none'" type="radio"
                                    value="DEP"/>
                             <label>Deposit</label>
-                            <input name="typeOperation" onchange="document.getElementById('forTransfer').style.display='none'" type="radio"
+                            <input name="typeOperation"
+                                   onchange="document.getElementById('forTransfer').style.display='none'" type="radio"
                                    value="WTR"/>
                             <label>Withdraw</label>
-                            <input name="typeOperation" onchange="document.getElementById('forTransfer').style.display='block'" type="radio"
+                            <input name="typeOperation"
+                                   onchange="document.getElementById('forTransfer').style.display='block'" type="radio"
                                    value="TRS"/>
                             <label>Transfer</label>
                         </div>

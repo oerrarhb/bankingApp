@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html lang="en" layout:decorate="~{mainTemplate}" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="https://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -15,115 +16,100 @@
 </head>
 
 <body>
-<header class="header">
+<section layout:fragment="content">
 
-    <nav class="navbar navbar-default navbar-static-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse" type="button">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
 
-                <a class="navbar-brand" href="">HELLO BANK</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="./">Home</a></li>
-                    <li><a href="accounts.html">Log In</a></li>
-                    <li><a href="signin.html">Sign In</a></li>
-                </ul>
-
-            </div>
-            <!--/.nav-collapse -->
-        </div>
-    </nav>
-</header>
-<div class="login-container">
-    <div class="col-md-offset-4 col-lg-4 col-sm-4 col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="text-center"> Create your Client </h3>
-            </div>
-            <div class="panel-body">
-                <form action="#" autocomplete="off" class="manage-wrapper" method="post" th:action="@{/signIn}"
-                      th:object="${client}">
-                    <div class="form-group">
-                        <label class="sr-only" for="firstname">Firstname</label>
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-user"></i> </span>
-                            <input class="form-control" id="firstname" name="firstname" placeholder="Enter your FirstName"
-                                   required th:field="*{firstName}" type="text" value="">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="sr-only" for="lastname">LastName</label>
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-user"></i> </span>
-                            <input class="form-control" id="lastname" name="lastname" placeholder="Enter your LastName"
-                                   required th:field="*{lastName}" type="text" value="">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="sr-only" for="phone">Phone</label>
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-phone"></i> </span>
-                            <input class="form-control" id="phone" name="phone" placeholder="Enter your Phone" required
-                                   th:field="*{phone}" type="text" value="">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="sr-only" for="address">Address</label>
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-map-marker"></i> </span>
-                            <input class="form-control" id="address" name="address" placeholder="Enter your Address" required
-                                   th:field="*{address}" type="text" value="">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="sr-only" for="email">Email address</label>
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-envelope"></i> </span>
-                            <input class="form-control" id="email" name="email" placeholder="Enter your Email Address" required
-                                   th:field="*{email}" type="email" value="">
-                        </div>
-                    </div>
-                    <script src="/js/confirm-password.js"></script>
-                    <div class="form-group">
-                        <label class="sr-only" for="password">Password</label>
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-key"></i> </span>
-                            <input class="form-control" id="password" name="password" onkeyup='check();' placeholder="Enter Your Password"
-                                   required th:field="*{password}" type="password" value="">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="sr-only" for="confirm_password">Password</label>
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-key"></i> </span>
-                            <input class="form-control" id="confirm_password" name="confirm_password" onkeyup='check();'
-                                   placeholder="Confirm Your Password"
-                                   required type="password" value="">
-                        </div>
-                        <span id='message'></span>
-                    </div>
-                    <div class="col-md-offset-4 col-lg-4 col-sm-4 col-md-4">
+    <div class="login-container">
+        <div class="col-md-offset-4 col-lg-4 col-sm-4 col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="text-center"> Create your Account </h3>
+                </div>
+                <div class="panel-body">
+                    <form action="#" autocomplete="off" class="manage-wrapper" method="post" th:action="@{/signIn}"
+                          th:object="${client}">
                         <div class="form-group">
-                            <button class="btn btn-primary" disabled id="submit" type="submit">Create</button>
+                            <label class="sr-only" for="firstname">Firstname</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user"></i> </span>
+                                <input class="form-control" id="firstname" name="firstname"
+                                       placeholder="Enter your FirstName"
+                                       required th:field="*{firstName}" type="text" value="">
+                            </div>
                         </div>
-                    </div>
-                </form>
+                        <div class="form-group">
+                            <label class="sr-only" for="lastname">LastName</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user"></i> </span>
+                                <input class="form-control" id="lastname" name="lastname"
+                                       placeholder="Enter your LastName"
+                                       required th:field="*{lastName}" type="text" value="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="phone">Phone</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-phone"></i> </span>
+                                <input class="form-control" id="phone" name="phone" placeholder="Enter your Phone"
+                                       required
+                                       th:field="*{phone}" type="text" value="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="address">Address</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-map-marker"></i> </span>
+                                <input class="form-control" id="address" name="address" placeholder="Enter your Address"
+                                       required
+                                       th:field="*{address}" type="text" value="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="email">Email address</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope"></i> </span>
+                                <input class="form-control" id="email" name="email"
+                                       placeholder="Enter your Email Address"
+                                       required
+                                       th:field="*{email}" type="email" value="">
+                            </div>
+                        </div>
+                        <script src="/js/confirm-password.js"></script>
+                        <div class="form-group">
+                            <label class="sr-only" for="password">Password</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-key"></i> </span>
+                                <input class="form-control" id="password" name="password" onkeyup='check();'
+                                       placeholder="Enter Your Password"
+                                       required th:field="*{password}" type="password" value="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="confirm_password">Password</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-key"></i> </span>
+                                <input class="form-control" id="confirm_password" name="confirm_password"
+                                       onkeyup='check();'
+                                       placeholder="Confirm Your Password"
+                                       required type="password" value="">
+                            </div>
+                            <span id='message'></span>
+                        </div>
+                        <div class="col-md-offset-4 col-lg-4 col-sm-4 col-md-4">
+                            <div class="form-group">
+                                <button class="btn btn-primary" disabled id="submit" type="submit">Create</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-    <!--Change Password Modal Box-->
-    <footer class="footer">
-        <div class="container-footer">&copy; 2021. Hello BANK</div>
-    </footer>
-    <script src="../static/js/jquery-1.11.1.min.js"></script>
-    <script src="../static/js/bootstrap.min.js"></script>
+        <!--Change Password Modal Box-->
+        <script src="../static/js/jquery-1.11.1.min.js"></script>
+        <script src="../static/js/bootstrap.min.js"></script>
+</section>
+<footer class="footer">
+    <div class="container-footer">&copy; 2021. FIREC BANK</div>
+</footer>
 </body>
-
 </html>
