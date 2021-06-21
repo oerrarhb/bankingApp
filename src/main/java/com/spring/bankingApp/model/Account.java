@@ -1,16 +1,13 @@
 package com.spring.bankingApp.model;
 
 
+import lombok.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.With;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "BankAccounts")
 @Builder
@@ -19,6 +16,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @AllArgsConstructor
 @With
 public class Account implements Serializable {
+
+
     @Id
     private String idAccount;
     private AccountTypes type;

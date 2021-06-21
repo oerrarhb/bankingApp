@@ -1,20 +1,14 @@
 package com.spring.bankingApp.config;
 
 import com.spring.bankingApp.business.Bank;
-import com.spring.bankingApp.business.BankImplementation;
-import com.spring.bankingApp.model.Account;
-import com.spring.bankingApp.model.AccountTypes;
-import com.spring.bankingApp.model.Client;
 import com.spring.bankingApp.repositories.AccountRepository;
 import com.spring.bankingApp.repositories.ClientRepository;
 import com.spring.bankingApp.repositories.OperationRepository;
-import java.util.Date;
-import java.util.List;
-import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @EnableMongoRepositories(basePackageClasses = {AccountRepository.class, ClientRepository.class, OperationRepository.class})
@@ -24,9 +18,23 @@ public class MongoDBConfig {
     @Autowired
     Bank bank;
 
+    @Autowired
+    MongoOperations mongoOperations;
+
     @Bean
     CommandLineRunner commandLineRunner(ClientRepository clientRepository, OperationRepository operationRepository, AccountRepository accountRepository) {
         return strings -> {
+
+
+
+
+
+
+
+
+
+
+
 /*            clientRepository.deleteAll();
             accountRepository.deleteAll();
             operationRepository.deleteAll();

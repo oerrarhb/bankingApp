@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="en">
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
     <title>Bank</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="../static/css/style.css" th:href="@{/css/style.css}"/>
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
+    <link href="../static/css/style.css" rel="stylesheet" th:href="@{/css/style.css}" type="text/css"/>
 </head>
 <body>
 <header>
@@ -12,8 +13,8 @@
         <h1>HELLO BANK</h1>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a th:href="@{/accounts}" class="nav-link">Accounts</a></li>
-                <li class="nav-item"><a th:href="@{/clients}" class="nav-link">Clients</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/accounts}">Accounts</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/clients}">Clients</a></li>
             </ul>
         </div>
     </nav>

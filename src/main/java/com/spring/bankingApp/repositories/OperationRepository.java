@@ -1,17 +1,17 @@
 package com.spring.bankingApp.repositories;
 
 import com.spring.bankingApp.model.Operation;
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+
 public interface OperationRepository extends MongoRepository<Operation, Long> {
-    default
-    Page<Operation> listOperation(String idAccount, Pageable pageable) {
+    default Page<Operation> listOperation(String idAccount, Pageable pageable) {
         List<Operation> operations = this.findAll().stream()
                 .filter(o -> Objects.equals(o.getAccount().getIdAccount(), idAccount)).collect(Collectors.toList());
         int start = (int) pageable.getOffset();
