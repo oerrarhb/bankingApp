@@ -17,9 +17,10 @@ import java.util.List;
 @With
 public class Account implements Serializable {
 
+    public static final transient String SEQUENCE_NAME = "accounts_sequence";
 
     @Id
-    private String idAccount;
+    private long idAccount;
     private AccountTypes type;
     private Date dateOfCreation;
     private double balance;

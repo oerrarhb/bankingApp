@@ -5,7 +5,6 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
-import java.util.List;
 
 
 @Document(collection = "BankClients")
@@ -27,5 +26,5 @@ public class Client implements Serializable {
     private String address;
     private String city;
     private String email;
-    private List<Account> accounts;
+    private Account account;
 }

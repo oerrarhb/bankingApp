@@ -5,13 +5,13 @@ import com.spring.bankingApp.model.Operation;
 import org.springframework.data.domain.Page;
 
 public interface Bank {
-    Account checkAccount(String accountId);
+    Account checkAccount(long accountId);
 
-    void depositMoney(String accountId, double amount);
+    void depositMoney(long accountId, double amount);
 
-    void withdrawMoney(String accountId, double amount);
+    void withdrawMoney(long accountId, double amount);
 
-    void transferMoney(String accountId1, String accountId2, double amount);
+    void transferMoney(long accountId1, long accountId2, double amount);
 
-    Page<Operation> listOperations(String accountId, int page, int size);
+    Page<Operation> listOperations(long accountId, int page, int size);
 }

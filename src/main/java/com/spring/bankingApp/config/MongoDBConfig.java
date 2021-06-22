@@ -26,14 +26,8 @@ public class MongoDBConfig {
         return strings -> {
 
 
-
-
-
-
-
-
-
-
+            clientRepository.deleteAll();
+            accountRepository.deleteAll();
 
 /*            clientRepository.deleteAll();
             accountRepository.deleteAll();

@@ -24,7 +24,7 @@ public class BankImplementation implements Bank {
     private OperationRepository operationRepository;
 
     @Override
-    public Account checkAccount(String accountId) {
+    public Account checkAccount(long accountId) {
         var account = accountRepository.findById(accountId);
         if (account.isPresent()) {
             return account.get();
@@ -34,7 +34,7 @@ public class BankImplementation implements Bank {
     }
 
     @Override
-    public void depositMoney(String accountId, double amount) {
+    public void depositMoney(long accountId, double amount) {
         var account = checkAccount(accountId);
         var transfer = Operation.builder()
                 .dateOfOperation(new Date())
@@ -48,7 +48,7 @@ public class BankImplementation implements Bank {
     }
 
     @Override
-    public void withdrawMoney(String accountId, double amount) {
+    public void withdrawMoney(long accountId, double amount) {
         var account = checkAccount(accountId);
         var withdraw = Operation.builder()
                 .dateOfOperation(new Date())
@@ -62,7 +62,7 @@ public class BankImplementation implements Bank {
     }
 
     @Override
-    public void transferMoney(String idAccount, String toIdAccount, double amount) {
+    public void transferMoney(long idAccount, long toIdAccount, double amount) {
         var account = checkAccount(idAccount);
         var transfer = Operation.builder()
                 .dateOfOperation(new Date())
@@ -76,7 +76,7 @@ public class BankImplementation implements Bank {
     }
 
     @Override
-    public Page<Operation> listOperations(String accountId, int page, int size) {
+    public Page<Operation> listOperations(long accountId, int page, int size) {
         return operationRepository.listOperation(accountId, PageRequest.of(page, size));
     }
 }
