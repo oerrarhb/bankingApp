@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" layout:decorate="~{mainTemplate}" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sign In</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/fontawesome.min.css" rel="stylesheet">
+    <link href="/css/animate.css" rel="stylesheet">
+    <link href="/css/styles.css" rel="stylesheet">
+    <link href="/css/manage.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400|Open+Sans:100,300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cedarville+Cursive" rel="stylesheet">
+</head>
+
+<body>
+<section layout:fragment="content">
+    <div class="login-container">
+        <div class="col-md-offset-4 col-lg-4 col-sm-4 col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="text-center"> Log In </h3>
+                </div>
+                <div class="panel-body">
+                    <form action="#" autocomplete="off" class="manage-wrapper" method="post" th:action="@{/logIn}">
+                        <div class="form-group">
+                            <label class="sr-only" for="email">User Name</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope"></i> </span>
+                                <input class="form-control" id="email" name="email"
+                                       placeholder="Enter your username"
+                                       required
+                                       type="email" value="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="password">Password</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-key"></i> </span>
+                                <input class="form-control" id="password" name="password" onkeyup='check();'
+                                       placeholder="Enter Your Password"
+                                       required type="password" value="">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--Change Password Modal Box-->
+</section>
+<footer class="footer">
+    <div class="container-footer">&copy; 2021. FIREC BANK</div>
+</footer>
+</body>
+</html>
