@@ -19,12 +19,12 @@ public class Client implements Serializable {
 
     @Id
     private long id;
+    private String username;
     private String firstName;
     private String lastName;
     private String password;
     private String phone;
     private String address;
-    private String city;
     private String email;
     private Account account;
 }

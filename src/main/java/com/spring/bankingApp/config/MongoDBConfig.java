@@ -24,11 +24,6 @@ public class MongoDBConfig {
     @Bean
     CommandLineRunner commandLineRunner(ClientRepository clientRepository, OperationRepository operationRepository, AccountRepository accountRepository) {
         return strings -> {
-
-
-            clientRepository.deleteAll();
-            accountRepository.deleteAll();
-
 /*            clientRepository.deleteAll();
             accountRepository.deleteAll();
             operationRepository.deleteAll();

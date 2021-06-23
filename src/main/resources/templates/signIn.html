@@ -17,8 +17,6 @@
 
 <body>
 <section layout:fragment="content">
-
-
     <div class="login-container">
         <div class="col-md-offset-4 col-lg-4 col-sm-4 col-md-4">
             <div class="panel panel-default">
@@ -28,6 +26,15 @@
                 <div class="panel-body">
                     <form action="#" autocomplete="off" class="manage-wrapper" method="post" th:action="@{/signIn}"
                           th:object="${client}">
+                        <div class="form-group">
+                            <label class="sr-only" for="username">Username</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user"></i> </span>
+                                <input class="form-control" id="username" name="username"
+                                       placeholder="Enter your Username"
+                                       required th:field="*{username}" type="text" value="">
+                            </div>
+                        </div>
                         <div class="form-group">
                             <label class="sr-only" for="firstname">Firstname</label>
                             <div class="input-group">
@@ -104,12 +111,10 @@
                 </div>
             </div>
         </div>
-        <!--Change Password Modal Box-->
-        <script src="../static/js/jquery-1.11.1.min.js"></script>
-        <script src="../static/js/bootstrap.min.js"></script>
+    </div>
+    <!--Change Password Modal Box-->
+    <script src="../static/js/jquery-1.11.1.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
 </section>
-<footer class="footer">
-    <div class="container-footer">&copy; 2021. FIREC BANK</div>
-</footer>
 </body>
 </html>
