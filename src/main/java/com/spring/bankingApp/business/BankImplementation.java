@@ -23,8 +23,13 @@ public class BankImplementation implements Bank {
     @Autowired
     private OperationRepository operationRepository;
 
+
+    @Autowired
+    private OperationService operationService;
+
+
     @Override
-    public Account checkAccount(long accountId) {
+    public Account checkAccount(Long accountId) {
         var account = accountRepository.findById(accountId);
         if (account.isPresent()) {
             return account.get();
@@ -34,36 +39,36 @@ public class BankImplementation implements Bank {
     }
 
     @Override
-    public void depositMoney(long accountId, double amount) {
-        var account = checkAccount(accountId);
+    public void depositMoney(Long accountId, double amount) {
+        var account = accountRepository.findById(accountId).orElse(null);
         var transfer = Operation.builder()
                 .dateOfOperation(new Date())
                 .type(OperationTypes.DEPOSIT)
                 .amount(amount)
                 .account(account)
                 .build();
-        operationRepository.save(transfer);
+        operationService.save(transfer);
         account.setBalance(account.getBalance() + amount);
         accountRepository.save(account);
     }
 
     @Override
-    public void withdrawMoney(long accountId, double amount) {
-        var account = checkAccount(accountId);
+    public void withdrawMoney(Long accountId, double amount) {
+        var account = accountRepository.findById(accountId).orElse(null);
         var withdraw = Operation.builder()
                 .dateOfOperation(new Date())
                 .type(OperationTypes.WITHDRAW)
                 .amount(amount)
                 .account(account)
                 .build();
-        operationRepository.save(withdraw);
+        operationService.save(withdraw);
         account.setBalance(account.getBalance() - amount);
         accountRepository.save(account);
     }
 
     @Override
-    public void transferMoney(long idAccount, long toIdAccount, double amount) {
-        var account = checkAccount(idAccount);
+    public void transferMoney(Long idAccount, Long toIdAccount, double amount) {
+        var account = accountRepository.findById(idAccount).orElse(null);
         var transfer = Operation.builder()
                 .dateOfOperation(new Date())
                 .type(OperationTypes.TRANSFER)
@@ -72,11 +77,11 @@ public class BankImplementation implements Bank {
                 .build();
         depositMoney(toIdAccount, amount);
         withdrawMoney(idAccount, amount);
-        operationRepository.save(transfer);
+        operationService.save(transfer);
     }
 
     @Override
-    public Page<Operation> listOperations(long accountId, int page, int size) {
+    public Page<Operation> listOperations(Long accountId, int page, int size) {
         return operationRepository.listOperation(accountId, PageRequest.of(page, size));
     }
 }

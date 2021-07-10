@@ -14,8 +14,11 @@ import java.util.Date;
 @AllArgsConstructor
 @With
 public class Operation implements Serializable {
+
+    public static final transient String SEQUENCE_NAME = "operations_sequence";
+
     @Id
-    private String id;
+    private long id;
     private OperationTypes type;
     private Date dateOfOperation;
     private double amount;

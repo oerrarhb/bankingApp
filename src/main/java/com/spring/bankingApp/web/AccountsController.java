@@ -24,25 +24,24 @@ public class AccountsController {
 
     @RequestMapping({"/accounts"})
     public String findAccount() {
-        return "accounts";
+        return "accounts-client";
     }
 
     @RequestMapping("/checkAccount")
-    public String check(Model model, long idAccount) {
+    public String check(Model model, Long idAccount) {
         try {
             Account account = bank.checkAccount(idAccount);
             Page<Operation> pageOperations = bank.listOperations(idAccount, 0, 7);
             model.addAttribute("listOperations", pageOperations.getContent());
-            System.out.println(pageOperations);
             model.addAttribute("account", account);
         } catch (Exception e) {
             model.addAttribute("exception", e);
         }
-        return "accounts";
+        return "accounts-admin";
     }
 
     @RequestMapping(value = "/saveOperation", method = RequestMethod.POST)
-    public String saveOperation(Model model, String typeOperation, long idAccount, double amount, long toIdAccount) throws Exception {
+    public String saveOperation(Model model, String typeOperation, Long idAccount, double amount, Long toIdAccount) throws Exception {
         try {
             if (Objects.equals(typeOperation, "DEP")) {
                 bank.depositMoney(idAccount, amount);

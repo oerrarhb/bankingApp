@@ -85,14 +85,8 @@ public class MongoDBConfig {
             clientRepository.save(client1);
             clientRepository.save(client2);
             clientRepository.save(client3);
-
-            bank.depositMoney(account1.getIdAccount(),5000);
-            bank.withdrawMoney(account1.getIdAccount(),3000);
-            bank.depositMoney(account3.getIdAccount(),7000);
-            bank.depositMoney(account3.getIdAccount(),7000);
-            bank.depositMoney(account3.getIdAccount(),7000);
-            bank.depositMoney(account3.getIdAccount(),7000);
-            bank.withdrawMoney(account3.getIdAccount(),7000);*/
+*/
+            bank.depositMoney(49L,5000);
 
         };
     }

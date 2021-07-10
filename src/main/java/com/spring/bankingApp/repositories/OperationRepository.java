@@ -11,7 +11,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 public interface OperationRepository extends MongoRepository<Operation, Long> {
-    default Page<Operation> listOperation(long idAccount, Pageable pageable) {
+    default Page<Operation> listOperation(Long idAccount, Pageable pageable) {
         List<Operation> operations = this.findAll().stream()
                 .filter(o -> Objects.equals(o.getAccount().getIdAccount(), idAccount)).collect(Collectors.toList());
         int start = (int) pageable.getOffset();
