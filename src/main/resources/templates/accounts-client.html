@@ -20,35 +20,41 @@
 <div layout:fragment="content">
     <div class="row">
         <div class="col-md-offset-4 col-lg-4 col-sm-4 col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="text-center">Account Information</h3>
-            </div>
-            <div class="panel-body">
-                <div>
-                    <label>Id:</label>
-                    <label sec:authentication="principal.client.account.idAccount"></label>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="text-center">Account Information</h3>
                 </div>
-                <div>
-                    <label>Client:</label>
-                    <label sec:authentication="principal.client.username"></label>
-                </div>
-                <div>
-                    <label>Type:</label>
-                    <label sec:authentication="principal.client.account.type"></label>
-                </div>
-                <div>
-                    <label>Date:</label>
-                    <label sec:authentication="principal.client.account.dateOfCreation"></label>
-                </div>
-                <div>
-                    <label>Balance:</label>
-                    <label sec:authentication="principal.client.account.balance"></label>
+                <div class="panel-body">
+                    <div>
+                        <label>Id:</label>
+                        <label sec:authentication="principal.client.account.idAccount"></label>
+                    </div>
+                    <div>
+                        <label>Client:</label>
+                        <label sec:authentication="principal.client.username"></label>
+                    </div>
+                    <div>
+                        <label>Type:</label>
+                        <label sec:authentication="principal.client.account.type"></label>
+                    </div>
+                    <div>
+                        <label>Date:</label>
+                        <label sec:authentication="principal.client.account.dateOfCreation"></label>
+                    </div>
+                    <div>
+                        <label>Balance:</label>
+                        <label sec:authentication="principal.client.account.balance"></label>
+                    </div>
                 </div>
             </div>
         </div>
+        </br>
+        <div class="col-md-offset-5 col-lg-5 col-sm-5 col-md-5">
+                <a th:href="@{/check_your_account}">Check your account</a>
+                <div class="text-danger" th:if="${exception}" th:text="${exception.message}"></div>
+        </div>
     </div>
-    </div>
+</div>
 </div>
 </body>
 </html>

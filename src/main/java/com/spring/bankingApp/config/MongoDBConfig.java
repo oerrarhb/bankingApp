@@ -24,10 +24,10 @@ public class MongoDBConfig {
     @Bean
     CommandLineRunner commandLineRunner(ClientRepository clientRepository, OperationRepository operationRepository, AccountRepository accountRepository) {
         return strings -> {
-/*            clientRepository.deleteAll();
+            clientRepository.deleteAll();
             accountRepository.deleteAll();
             operationRepository.deleteAll();
-
+/*
             Account account1 = Account.builder()
                     .balance(40000)
                     .type(AccountTypes.CURRENT)
@@ -86,7 +86,7 @@ public class MongoDBConfig {
             clientRepository.save(client2);
             clientRepository.save(client3);
 */
-            bank.depositMoney(49L,5000);
+            //bank.depositMoney(49L,5000);
 
         };
     }

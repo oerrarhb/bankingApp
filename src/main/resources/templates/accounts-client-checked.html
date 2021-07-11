@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" layout:decorate="~{mainTemplate}" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign In</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/fontawesome.min.css" rel="stylesheet">
+    <link href="/css/animate.css" rel="stylesheet">
+    <link href="/css/styles.css" rel="stylesheet">
+    <link href="/css/manage.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400|Open+Sans:100,300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cedarville+Cursive" rel="stylesheet">
+    <title>Accounts</title>
+</head>
+
+<body>
+<div layout:fragment="content">
+    <div class="row">
+        <div class="col-md-offset-4 col-lg-4 col-sm-4 col-md-4">
+            <div class="panel panel-default" th:if="${account}">
+                <div class="panel-heading">
+                    <h3 class="text-center">Account Information</h3>
+                </div>
+                <div class="panel-body">
+                    <div>
+                        <label>Id:</label>
+                        <label th:text="${account.idAccount}"></label>
+                    </div>
+                    <div>
+                        <label>Client:</label>
+                        <label th:text="${account.client.username}"></label>
+                    </div>
+                    <div>
+                        <label>Type:</label>
+                        <label th:text="${account.type}"></label>
+                    </div>
+                    <div>
+                        <label>Date:</label>
+                        <label th:text="${account.dateOfCreation}"></label>
+                    </div>
+                    <div>
+                        <label>Balance:</label>
+                        <label th:text="${account.balance}"></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </br>
+        <div class="col-md-6">
+            <div class="panel panel-default" th:if="${account}">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Account Operations</h3>
+                </div>
+                <div class="panel-body">
+                    <form method="post" th:action="@{/saveOperationOfClient}">
+                        <div>
+                            <label>Account:</label>
+                            <input name="idAccount" th:value="${account.idAccount}" type="hidden"/>
+                            <label th:text="${account.idAccount}"></label>
+                        </div>
+                        <div>
+                            <input checked="checked" name="typeOperation"
+                                   onchange="document.getElementById('forTransfer').style.display='none'" type="radio"
+                                   value="DEP"/>
+                            <label>Deposit</label>
+                            <input name="typeOperation"
+                                   onchange="document.getElementById('forTransfer').style.display='none'" type="radio"
+                                   value="WTR"/>
+                            <label>Withdraw</label>
+                            <input name="typeOperation"
+                                   onchange="document.getElementById('forTransfer').style.display='block'" type="radio"
+                                   value="TRS"/>
+                            <label>Transfer</label>
+                        </div>
+                        <div id="forTransfer" style="display:none">
+                            <label>To:</label>
+                            <input name="toIdAccount" type="text"/>
+                        </div>
+                        <div>
+                            <label>Amount:</label>
+                            <input name="amount" type="text"/>
+                        </div>
+                        <button class="btn btn-primary" type="submit">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-default" th:if="${account}">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Operations List</h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-striped">
+                        <tr>
+                            <th>Id</th>
+                            <th>Type</th>
+                            <th>Date</th>
+                            <th>Amount</th>
+                        </tr>
+                        <tr th:each="o:${listOperations}">
+                            <td th:text="${o.id}"></td>
+                            <td th:text="${o.type}"></td>
+                            <td th:text="${o.dateOfOperation}"></td>
+                            <td th:text="${o.amount}"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+</body>
+</html>

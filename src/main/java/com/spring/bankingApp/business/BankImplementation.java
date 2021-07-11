@@ -27,6 +27,9 @@ public class BankImplementation implements Bank {
     @Autowired
     private OperationService operationService;
 
+    @Autowired
+    private ClientService clientService;
+
 
     @Override
     public Account checkAccount(Long accountId) {
@@ -50,6 +53,10 @@ public class BankImplementation implements Bank {
         operationService.save(transfer);
         account.setBalance(account.getBalance() + amount);
         accountRepository.save(account);
+        var client = clientService.findById(account.getClient().getId());
+        client.setAccount(account);
+        clientService.save(client);
+
     }
 
     @Override
@@ -64,6 +71,9 @@ public class BankImplementation implements Bank {
         operationService.save(withdraw);
         account.setBalance(account.getBalance() - amount);
         accountRepository.save(account);
+        var client = clientService.findById(account.getClient().getId());
+        client.setAccount(account);
+        clientService.save(client);
     }
 
     @Override

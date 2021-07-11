@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" layout:decorate="~{mainTemplate}" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="https://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Sign In</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/fontawesome.min.css" rel="stylesheet">
+    <link href="/css/animate.css" rel="stylesheet">
+    <link href="/css/styles.css" rel="stylesheet">
+    <link href="/css/manage.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400|Open+Sans:100,300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cedarville+Cursive" rel="stylesheet">
+    <title>Accounts</title>
+</head>
+
+<body>
+<div layout:fragment="content">
+    <div class="row">
+        <div class="col-md-offset-4 col-lg-4 col-sm-4 col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="text-center">Account Information</h3>
+                </div>
+                <div class="panel-body">
+                    <div>
+                        <label>Id:</label>
+                        <label th:text="${bankClient.client.account.idAccount}"></label>
+                    </div>
+                    <div>
+                        <label>Client:</label>
+                        <label th:text="${bankClient.client.username}"></label>
+                    </div>
+                    <div>
+                        <label>Type:</label>
+                        <label th:text="${bankClient.client.account.type}"></label>
+                    </div>
+                    <div>
+                        <label>Date:</label>
+                        <label th:text="${bankClient.client.account.dateOfCreation}"></label>
+                    </div>
+                    <div>
+                        <label>Balance:</label>
+                        <label th:text="${bankClient.client.account.balance}"></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </br>
+        <div class="col-md-6">
+            <div class="panel panel-default" th:if="${bankClient.client.account}">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Account Operations</h3>
+                </div>
+                <div class="panel-body">
+                    <form method="post" th:action="@{/saveOperationOfClient}">
+                        <div>
+                            <label>Account:</label>
+                            <input name="idAccount" th:value="${bankClient.client.account.idAccount}" type="hidden"/>
+                            <label th:text="${bankClient.client.account.idAccount}"></label>
+                        </div>
+                        <div>
+                            <input checked="checked" name="typeOperation"
+                                   onchange="document.getElementById('forTransfer').style.display='none'" type="radio"
+                                   value="DEP"/>
+                            <label>Deposit</label>
+                            <input name="typeOperation"
+                                   onchange="document.getElementById('forTransfer').style.display='none'" type="radio"
+                                   value="WTR"/>
+                            <label>Withdraw</label>
+                            <input name="typeOperation"
+                                   onchange="document.getElementById('forTransfer').style.display='block'" type="radio"
+                                   value="TRS"/>
+                            <label>Transfer</label>
+                        </div>
+                        <div id="forTransfer" style="display:none">
+                            <label>To:</label>
+                            <input name="toIdAccount" type="text"/>
+                        </div>
+                        <div>
+                            <label>Amount:</label>
+                            <input name="amount" type="text"/>
+                        </div>
+                        <button class="btn btn-primary" type="submit">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>
